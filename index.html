@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Focus</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <input type="text" id="f1" class="vertical" /><br /><br />
+    <input type="text" id="f1" class="vertical" /><br /><br />
+    <input type="text" id="f1" class="vertical" /><br /><br />
+    <input type="text" id="f1" class="vertical" /><br /><br />
+    <input type="text" id="f1" class="vertical" /><br /><br />
+    <input type="text" id="f1" class="vertical" /><br /><br />
+    <input type="text" id="f1" class="vertical" /><br /><br />
+
+    <script>
+      $(document).ready(function () {
+        $("#f1").focus();
+
+        $(".vertical").keypress(function (event) {
+          if (event.keyCode == 13) {
+            textboxes = $("input.vertical");
+            debugger;
+            currentBoxNumber = textboxes.index(this);
+            if (textboxes[currentBoxNumber + 1] != null) {
+              nextBox = textboxes[currentBoxNumber + 1];
+              nextBox.focus();
+              nextBox.select();
+              event.preventDefault();
+              return false;
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
